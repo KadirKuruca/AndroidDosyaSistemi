@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/etDosyaAdi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -28,7 +28,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/etMesaj"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -46,6 +46,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="12dp"
         android:text="VERİYİ DOSYAYA KAYDET"
+        android:onClick="saveToInternalStorage"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,6 +60,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:text="DOSYALARI GÖRÜNTÜLE"
+        android:onClick="showFiles"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,6 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="Internal storage dosya yolu"
+        android:onClick="showInternalStoragePath"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +80,7 @@
         app:layout_constraintVertical_bias="0.398" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvYol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -95,12 +98,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:text="Internal Storagedeki Dosya Listesi"
+        android:onClick="showFileList"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tvYol" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvDosyaAdlari"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -118,6 +122,7 @@
         android:layout_marginBottom="70dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="67dp"
+        android:onClick="deleteFile"
         android:text="dosyayı sil"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -125,7 +130,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/etSilinecekDosya"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
