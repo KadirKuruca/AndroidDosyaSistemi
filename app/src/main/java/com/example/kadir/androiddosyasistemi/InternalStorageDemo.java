@@ -1,10 +1,12 @@
 package com.example.kadir.androiddosyasistemi;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -25,12 +27,26 @@ public class InternalStorageDemo extends AppCompatActivity {
     }
 
     public void showFileList(View view) {
+
+        String[] fileList = fileList();
+        StringBuilder stringBuilder = new StringBuilder();
+        for(String file : fileList){
+            stringBuilder.append(file).append(", ");
+        }
+        tvDosyaAdlari.setText(stringBuilder);
     }
 
     public void showInternalStoragePath(View view) {
+
+        String filePath = ""+getFilesDir();
+        tvDosyaYolu.setText(filePath);
     }
 
+    //Dosyaların Görüntüleneceği Activity e gitmek için
     public void showFiles(View view) {
+
+        Intent intent = new Intent(InternalStorageDemo.this,InternalStorageGoruntule.class);
+        startActivity(intent);
     }
 
     //Hafızaya bir dosya oluşturma ve içine yazma işlemi burada gerçekleşiyor.
@@ -64,6 +80,14 @@ public class InternalStorageDemo extends AppCompatActivity {
     }
 
     public void deleteFile(View view) {
+
+        String deleteFileName = etSilinecekDosya.getText().toString();
+        boolean silindi = deleteFile(deleteFileName);
+        if(silindi){
+            Toast.makeText(this, "Dosya Silindi!", Toast.LENGTH_SHORT).show();
+        }
+        else
+            Toast.makeText(this, ":Dosya Silinemedi!", Toast.LENGTH_SHORT).show();
     }
 
     private void init() {
