@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".InternalStorageDemo" />
-        <activity android:name=".InternalStorageGoruntule"></activity>
+        <activity android:name=".InternalStorageGoruntule" />
+        <activity android:name=".CacheStorageDemo"></activity>
     </application>
 
 </manifest>

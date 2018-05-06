@@ -18,4 +18,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,InternalStorageDemo.class);
         startActivity(intent);
     }
+
+    public void openCacheStorageDemo(View view) {
+
+        Intent intent = new Intent(this,CacheStorageDemo.class);
+        startActivity(intent);
+    }
 }

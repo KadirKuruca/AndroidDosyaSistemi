@@ -7,7 +7,19 @@
     tools:context="com.example.kadir.androiddosyasistemi.MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="80dp"
+        android:onClick="openCacheStorageDemo"
+        android:text="CACHE STORAGE DEMO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:onClick="openInternalStorageDemo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
