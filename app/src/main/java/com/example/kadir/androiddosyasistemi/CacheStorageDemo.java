@@ -40,11 +40,44 @@ public class CacheStorageDemo extends AppCompatActivity {
 
         File cacheFolder = getCacheDir();
         File cacheFile = new File(cacheFolder,"cache_file.txt");
+
+        writeToFile(cacheFile,cacheData);
+    }
+
+    public void loadDataFromInternalCache(View view) {
+
+        File cacheFolder = getCacheDir();
+        File cacheFile = new File(cacheFolder,"cache_file.txt");
+
+        tvInternalCache.setText(loadFromFile(cacheFile).toString());
+    }
+
+    public void saveDataToExternalCache(View view) {
+
+        String cacheData = etData2.getText().toString();
+
+        File cacheExternalFolder = getExternalCacheDir();
+        File cacheFile = new File(cacheExternalFolder,"cache_external_file.txt");
+
+        writeToFile(cacheFile,cacheData);
+    }
+
+    public void loadDataFromExternalCache(View view) {
+
+        File cacheExternalFolder = getExternalCacheDir();
+        File cacheExternalFile = new File(cacheExternalFolder,"cache_external_file.txt");
+
+        tvExternalCache.setText(loadFromFile(cacheExternalFile).toString());
+
+    }
+
+    //Dosya Oluşturmak ve İçerisine yazmak için ortak bir metod
+    public void writeToFile(File file, String data){
         FileOutputStream fos = null;
 
         try {
-            fos = new FileOutputStream(cacheFile);
-            fos.write(cacheData.getBytes());
+            fos = new FileOutputStream(file);
+            fos.write(data.getBytes());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -60,20 +93,16 @@ public class CacheStorageDemo extends AppCompatActivity {
                 }
             }
         }
-
-
     }
 
-    public void loadDataFromInternalCache(View view) {
-
-        File cacheFolder = getCacheDir();
-        File cacheFile = new File(cacheFolder,"cache_file.txt");
+    //Cache Dosyasından kayıtlı veriyi okumak için ortak kullanılacak metod
+    public StringBuffer loadFromFile(File file){
         StringBuffer buffer = new StringBuffer();
 
         FileInputStream fis = null;
 
         try {
-            fis = new FileInputStream(cacheFile);
+            fis = new FileInputStream(file);
             int read;
             while((read=fis.read()) != -1){
                 buffer.append((char)read);
@@ -92,6 +121,6 @@ public class CacheStorageDemo extends AppCompatActivity {
                 }
             }
         }
-        tvInternalCache.setText(buffer);
+        return buffer;
     }
 }
